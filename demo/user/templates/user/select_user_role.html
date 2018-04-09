@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<form method='POST' action='/user/select_user_role/'>
+    {% csrf_token %}
+
+    {% if error %}
+        <div>
+            错误：{{ error }}
+        </div>
+        <hr>
+    {% endif %}
+
+    {% if user %}
+        <div>
+            {{ user.id }} - {{ user.nickname }}
+            <input name='uid' type='hidden' value={{ user.id }}>
+        </div>
+        <hr>
+    {% endif %}
+
+    {% if roles %}
+        <div>
+            {% for role in roles %}
+                <div>
+                    <input name='role_id' type='checkbox' value='{{ role.id }}'
+                            {% if role.id in arr_id_role %}
+                                checked
+                            {% endif %}
+                            >
+                    <label>{{ role.name }}</label>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+    {% endif %}
+
+    <div>
+        <button type="submit">提交</button>
+    </div>
+</form>
+{% endblock %}
