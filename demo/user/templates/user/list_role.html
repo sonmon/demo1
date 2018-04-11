@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block container %}
+    {% if error %}
+        <div>
+            错误：{{ error }}
+        </div>
+        <hr>
+    {% endif %}
+
+    {% if roles %}
+        <div>
+            <table border='1'>
+                <tr>
+                    <th>id</th>
+                    <th>名称</th>
+                </tr>
+                {% for role in roles %}
+                    <tr>
+                        <th>{{ role.id }}</th>
+                        <th>{{ role.name }}</th>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
