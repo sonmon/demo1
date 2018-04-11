@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div>
+    {% if error %}
+        <div>
+            错误：{{ error }}
+        </div>
+        <hr>
+    {% endif %}
+
+    {% if user %}
+        <div>
+            {{ user.id }} - {{ user.nickname }}
+        </div>
+        <hr>
+    {% endif %}
+
+    {% if roles %}
+        <div>
+            {% for role in roles %}
+                <div>
+                    <label>{{ role.id }} - {{ role.name }}</label>
+                </div>
+            {% endfor %}
+        </div>
+        <hr>
+    {% endif %}
+</div>
+{% endblock %}
